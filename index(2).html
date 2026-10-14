@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Sayang 💛</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --yellow: #ffd95a;
+  --gold: #efa900;
+  --cream: #fffbea;
+  --brown: #754719;
+  --soft: #fff5c7;
+}
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  color: var(--brown);
+  background: linear-gradient(135deg, #fffdf0, #fff0a8);
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+#hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.heart {
+  position: absolute;
+  top: -30px;
+  color: #ffd84d;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes beat {
+  50% { transform: scale(1.15); }
+}
+
+/* HALAMAN PEMBUKA */
+
+#opening {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  text-align: center;
+  animation: appear 1s ease;
+}
+
+.small-label {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #b88419;
+  font-weight: bold;
+}
+
+#opening h1 {
+  font-size: clamp(32px, 8vw, 48px);
+  margin: 16px 0;
+}
+
+#opening p {
+  line-height: 1.8;
+}
+
+.envelope-button {
+  border: none;
+  background: transparent;
+  padding: 25px;
+  margin: 15px;
+}
+
+.envelope {
+  position: relative;
+  display: block;
+  width: 210px;
+  height: 140px;
+  background: #ffcf43;
+  border-radius: 8px;
+  box-shadow: 0 18px 35px #b78a2833;
+  transition: transform .3s;
+}
+
+.envelope-button:hover .envelope {
+  transform: translateY(-5px);
+}
+
+.envelope::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #ffe58c;
+  clip-path: polygon(0 0, 50% 58%, 100% 0);
+  z-index: 3;
+  transition: transform .4s;
+  transform-origin: top;
+}
+
+.envelope.opened::before {
+  transform: rotateX(180deg);
+}
+
+.envelope::after {
+  content: "💛";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 36px;
+}
+
+#openLetter {
+  border: 1px solid var(--gold);
+  border-radius: 30px;
+  background: #fffbea;
+  color: var(--brown);
+  padding: 13px 22px;
+}
+
+/* WEBSITE UTAMA */
+
+#content {
+  width: min(92%, 760px);
+  margin: auto;
+  animation: appear .8s ease;
+}
+
+.hero {
+  text-align: center;
+  padding: 48px 10px 36px;
+}
+
+.hero h1 {
+  font-size: clamp(40px, 9vw, 66px);
+  margin: 18px 0 10px;
+}
+
+.hero h1 span {
+  color: #d89b09;
+}
+
+.hero p {
+  line-height: 1.8;
+}
+
+.big-heart {
+  font-size: 48px;
+  animation: beat 1.5s infinite;
+}
+
+.card {
+  background: #fffdf4e8;
+  border: 1px solid #ffe39a;
+  border-radius: 20px;
+  padding: clamp(20px, 5vw, 32px);
+  margin-bottom: 22px;
+  box-shadow: 0 8px 25px #b78a2814;
+}
+
+.card h2 {
+  font-size: clamp(23px, 5vw, 30px);
+  margin-top: 10px;
+}
+
+.letter {
+  white-space: pre-line;
+  line-height: 2;
+  font-size: 15px;
+}
+
+.signature {
+  text-align: right;
+  font-style: italic;
+  color: #bb8615;
+  margin-top: 25px;
+}
+
+/* FOTO */
+
+.gallery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.photo-frame {
+  flex: 1;
+  max-width: 430px;
+  min-width: 0;
+  margin: 0;
+  padding: 10px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px #a77a191a;
+}
+
+.photo-frame img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: 7px;
+  background: #fff0ad;
+}
+
+.photo-frame figcaption {
+  padding: 12px 4px 5px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.arrow {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border: 1px solid #f4c44b;
+  border-radius: 50%;
+  background: #fff3bd;
+  color: var(--brown);
+  font-size: 24px;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  margin: 18px 0;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #eadba5;
+}
+
+.dot.active {
+  background: #e5a500;
+}
+
+/* MUSIK */
+
+.music {
+  text-align: center;
+}
+
+.music-note {
+  font-size: 48px;
+  margin: 18px 0;
+}
+
+.play-button {
+  background: linear-gradient(135deg, #ffdc66, #f1b91c);
+  border: none;
+  color: #67420e;
+  padding: 14px 24px;
+  border-radius: 30px;
+  box-shadow: 0 5px 15px #b78a2825;
+}
+
+#musicStatus {
+  font-size: 12px;
+  color: #99763a;
+  line-height: 1.8;
+}
+
+footer {
+  text-align: center;
+  padding: 25px 10px 40px;
+  line-height: 1.8;
+}
+
+@media (max-width: 420px) {
+  .arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+  }
+
+  .letter {
+    font-size: 14px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="hearts"></div>
+
+<!-- PEMBUKA -->
+<section id="opening">
+  <p class="small-label">A LITTLE LETTER FOR YOU ♡</p>
+  <h1>Hai, sayangku! 💛</h1>
+  <p>Ada sesuatu yang ingin aku sampaikan...</p>
+
+  <button class="envelope-button" id="openLetter"
+    aria-label="Buka surat">
+    <span class="envelope" id="envelope"></span>
+  </button>
+
+  <p>Sentuh amplopnya untuk membuka surat ♡</p>
+</section>
+
+<!-- ISI WEBSITE -->
+<main id="content" hidden>
+
+  <header class="hero">
+    <p class="small-label">♡ MADE WITH LOVE ♡</p>
+    <h1>For My <span>Sayang 💛</span></h1>
+    <p>From me, for my love of my life</p>
+    <div class="big-heart">💛</div>
+  </header>
+
+  <section class="card">
+    <p class="small-label">A LETTER FOR YOU</p>
+    <h2>Untuk kamu, cintaku 💌</h2>
+
+    <div class="letter">Hai, sayanggg...
+
+This is just for you.
+Its simple, but i hope
+you feel how much important you are for me.
+
+Thanks for coming into my life, sharing
+stories, laughter, and days with me.
+
+Aku tahu gak selamanya hari kita baik baik.
+Tapi aku bakal terus belajar memahami kamu,
+mendengarkan kamu, dan menjadi seseorang
+yang bisa kamu percaya.
+
+If today is heavy, ingat ya, sayang...
+kamu tidak harus selalu kuat. Kamu boleh istirahat,
+boleh bercerita, dan boleh menjadi dirimu sendiri.
+
+Aku sayang kamu. Hari ini, besok, dan selamanya, semoga
+masih banyak hari indah yang bisa kita lalui bersama. 💛</div>
+
+    <p class="signature">With all my love, your favorite person ♡</p>
+  </section>
+
+  <section class="card">
+    <p class="small-label">OUR LITTLE MEMORIES</p>
+    <h2>Potongan cerita kita 📸</h2>
+
+    <div class="gallery">
+      <button class="arrow" id="prev" aria-label="Foto sebelumnya">‹</button>
+
+      <figure class="photo-frame">
+        <img id="photo" src="WhatsApp Image 2026-10-14 at 20.34.20.jpeg" alt="Kenangan kita">
+        <figcaption id="caption">Our little memory ♡</figcaption>
+      </figure>
+
+      <button class="arrow" id="next" aria-label="Foto berikutnya">›</button>
+    </div>
+
+    <div class="dots" id="dots"></div>
+    <p style="text-align:center;font-size:13px">
+      Setiap foto menyimpan cerita kita ♡
+    </p>
+  </section>
+
+  <section class="card music">
+    <p class="small-label">A SONG FOR YOU</p>
+    <div class="music-note">🎵</div>
+    <h2>Lagu yang mengingatkanku padamu</h2>
+    <p>Sebuah lagu, sejuta kenangan.</p>
+
+    <audio id="song" src="Overnight - Kita Lewati Berdua (Official Lyric Video).mp3" loop preload="auto"></audio>
+
+    <button class="play-button" id="musicButton">
+      ▶ Putar lagu kita
+    </button>
+
+    <p id="musicStatus" aria-live="polite">
+      Musik dicoba diputar saat amplop dibuka ♡
+    </p>
+  </section>
+
+  <footer>
+    <div style="font-size:30px">💛</div>
+    Made with love, just for you.
+    <br>
+    <small>You are one of my favorite parts of life. ♡</small>
+  </footer>
+
+</main>
+
+<script>
+// MUSIK: COBA PUTAR SAAT AMPLOP DIKLIK
+const opening = document.getElementById('opening');
+const content = document.getElementById('content');
+const envelope = document.getElementById('envelope');
+const openButton = document.getElementById('openLetter');
+
+const song = document.getElementById('song');
+const musicButton = document.getElementById('musicButton');
+const musicStatus = document.getElementById('musicStatus');
+
+openButton.addEventListener('click', () => {
+  envelope.classList.add('opened');
+
+  // Mulai lagu dari menit dan detik yang dipilih
+  song.currentTime = 74; // 1 menit 0 detik
+
+  // Memulai musik langsung dari klik pengguna.
+  // Ini lebih memungkinkan daripada autoplay tanpa klik.
+  const playback = song.play();
+
+  if (playback) {
+    playback.then(() => {
+      musicButton.textContent = '❚❚ Jeda lagu';
+      musicStatus.textContent = 'Lagu diputar untukmu 💛';
+    }).catch(() => {
+      musicStatus.textContent =
+        'Musik belum bisa diputar. Tekan tombol putar ya 💛';
+    });
+  }
+
+  setTimeout(() => {
+    opening.hidden = true;
+    content.hidden = false;
+    window.scrollTo(0, 0);
+  }, 500);
+});
+
+// TOMBOL PUTAR DAN JEDA
+musicButton.addEventListener('click', async () => {
+  if (song.paused) {
+    try {
+      await song.play();
+      musicButton.textContent = '❚❚ Jeda lagu';
+      musicStatus.textContent = 'Lagu diputar untukmu 💛';
+    } catch (error) {
+      musicStatus.textContent =
+        'Periksa file assets/lagu.mp3 ya 💛';
+    }
+  } else {
+    song.pause();
+    musicButton.textContent = '▶ Putar lagu kita';
+    musicStatus.textContent = 'Lagu dijeda ♡';
+  }
+});
+
+song.addEventListener('play', () => {
+  musicButton.textContent = '❚❚ Jeda lagu';
+});
+
+song.addEventListener('pause', () => {
+  musicButton.textContent = '▶ Putar lagu kita';
+});
+
+// SLIDESHOW FOTO
+const photos = [
+  { src: 'WhatsApp Image 2026-10-14 at 20.34.20 (1).jpeg', text: 'Our little memory ♡' },
+  { src: 'WhatsApp Image 2026-10-14 at 20.34.20 (2).jpeg', text: 'A moment with you 💛' },
+  { src: 'WhatsApp Image 2026-10-14 at 20.34.20.jpeg', text: 'My favorite person 🌼' }
+];
+
+let photoIndex = 0;
+const photo = document.getElementById('photo');
+const caption = document.getElementById('caption');
+const dots = document.getElementById('dots');
+
+photos.forEach((item, index) => {
+  const dot = document.createElement('button');
+  dot.className = 'dot' + (index === 0 ? ' active' : '');
+  dot.setAttribute('aria-label', 'Foto ' + (index + 1));
+  dot.addEventListener('click', () => showPhoto(index));
+  dots.appendChild(dot);
+});
+
+function showPhoto(index) {
+  photoIndex = (index + photos.length) % photos.length;
+  photo.src = photos[photoIndex].src;
+  caption.textContent = photos[photoIndex].text;
+
+  document.querySelectorAll('.dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === photoIndex);
+  });
+}
+
+document.getElementById('prev').addEventListener('click', () => {
+  showPhoto(photoIndex - 1);
+});
+
+document.getElementById('next').addEventListener('click', () => {
+  showPhoto(photoIndex + 1);
+});
+
+// GANTI FOTO OTOMATIS SETIAP 4 DETIK
+setInterval(() => {
+  if (!content.hidden && !document.hidden) {
+    showPhoto(photoIndex + 1);
+  }
+}, 4000);
+
+// ANIMASI HATI BERJATUHAN
+const hearts = document.getElementById('hearts');
+
+function createHeart() {
+  if (document.hidden) return;
+
+  const heart = document.createElement('span');
+  heart.className = 'heart';
+  heart.textContent = ['💛', '♡', '♥', '✨'][
+    Math.floor(Math.random() * 4)
+  ];
+
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.fontSize = (12 + Math.random() * 15) + 'px';
+  heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+
+  hearts.appendChild(heart);
+  setTimeout(() => heart.remove(), 11000);
+}
+
+setInterval(createHeart, 650);
+</script>
+
+</body>
+</html>
